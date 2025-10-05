@@ -5,22 +5,30 @@ import { useTasks } from "./hooks/useTasks";
 import { TaskFilters } from "./components/TaskFilters";
 import { TaskList } from "./components/TaskList";
 import { useScroll } from "./hooks/useScroll";
+import { TaskStatus, TaskPriority } from "./data/tasks";
 
 export default function Home() {
   const { data, loading, error } = useTasks();
-  const [status, setStatus] = useState("all");
-  const [priority, setPriority] = useState("all");
+  const [status, setStatus] = useState<TaskStatus | "all">("all");
+  const [priority, setPriority] = useState<TaskPriority | "all">("all");
   const isAtEnd = useScroll();
 
-  const filteredTasks = data.filter(task =>
-    (status === "all" || task.status === status) &&
-    (priority === "all" || task.priority === priority)
+  const filteredTasks = data.filter(
+    (task) =>
+      (status === "all" || task.status === status) &&
+      (priority === "all" || task.priority === priority)
   );
 
   return (
     <div className="p-8">
       <h1 className="text-2xl font-bold mb-4">Task Manager</h1>
-      <TaskFilters status={status as any} priority={priority as any} setStatus={setStatus} setPriority={setPriority} />
+
+      <TaskFilters
+        status={status}
+        priority={priority}
+        setStatus={setStatus}
+        setPriority={setPriority}
+      />
 
       {loading && <p>Loading tasks...</p>}
       {error && <p className="text-red-500">{error}</p>}
@@ -32,6 +40,5 @@ export default function Home() {
         </div>
       )}
     </div>
-
   );
 }
