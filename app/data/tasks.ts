@@ -19,4 +19,6 @@ export const tasks: Task[] = [
   { id: 7, title: "Task 7", description: "Dummy description 7", status: "todo", priority: "medium" },
   { id: 8, title: "Task 8", description: "Dummy description 8", status: "todo", priority: "low" },
   { id: 9, title: "Task 9", description: "Dummy description 9", status: "in-progress", priority: "high" },
+  { id: 10, title: "Task 10", description: "Dummy description 9", status: "in-progress", priority: "high" },
+  { id: 11, title: "Task 11", description: "Dummy description 9", status: "in-progress", priority: "high" },
 ];

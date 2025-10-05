@@ -10,14 +10,14 @@ export const useTasks = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      // Mock error 20% of time
-      if (Math.random() < 0.2) {
+      // Mock error 30% of time
+      if (Math.random() < 0.3) {
         setError("Failed to fetch tasks");
       } else {
         setData(tasks);
       }
       setLoading(false);
-    }, 1000); // 1s loading
+    }, 2000); // 2s loading
 
     return () => clearTimeout(timer);
   }, []);
